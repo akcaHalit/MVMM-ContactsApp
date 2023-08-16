@@ -6,9 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.halitakca.mvmmkisileruygulamasi.R
+import com.halitakca.mvmmkisileruygulamasi.databinding.FragmentContactEntryBinding
+import com.halitakca.mvmmkisileruygulamasi.databinding.FragmentHomePageBinding
 
 
 class ContactEntryFragment : Fragment() {
+    private lateinit var binding: FragmentContactEntryBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,8 +21,8 @@ class ContactEntryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contact_entry, container, false)
+        binding = FragmentContactEntryBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
 }
