@@ -16,11 +16,12 @@ class ContactDetailFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentContactDetailBinding.inflate(inflater,container,false)
+
+        binding.toolbarcontactdetail.title = "Contact Detail"
+
+
         return binding.root
     }
 

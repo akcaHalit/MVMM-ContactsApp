@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import com.halitakca.mvmmkisileruygulamasi.R
 import com.halitakca.mvmmkisileruygulamasi.databinding.FragmentHomePageBinding
 
@@ -15,11 +16,15 @@ class HomePageFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentHomePageBinding.inflate(inflater,container,false)
+
+        binding.toolbarHomepage.title = "Contacts"
+
+        binding.fab.setOnClickListener{
+            Navigation.findNavController(it).navigate(R.id.contactEntryNav)
+        }
+
         return binding.root
     }
 
