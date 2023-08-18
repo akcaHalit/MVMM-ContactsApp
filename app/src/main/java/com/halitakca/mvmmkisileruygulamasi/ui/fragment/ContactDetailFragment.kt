@@ -23,6 +23,7 @@ class ContactDetailFragment : Fragment() {
 
         binding.toolbarcontactdetail.title = "Contact Detail"
 
+        //      Args datask bu şekilde çekiliyor.   Ve kullanımı:
         val bundle : ContactDetailFragmentArgs by navArgs()
         val kisi = bundle.kisi
 

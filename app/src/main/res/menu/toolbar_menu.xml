@@ -2,9 +2,17 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/action_search"
+    <!--Item'da Search Vector'u ekleyip bunun içine attık=Search Butonu oluşturma-->
+    <!-- showAsAction: aksiyon göster: Sana iş yaptırıcaz bunu bil.-->
+    <!-- actionViewClass: Arama Özelliği ekledik-->
+    <item android:id="@+id/action_search" android:title="Search"
         android:icon="@drawable/search_image"
-        android:title="Search"
-        app:showAsAction="always|collapseActionView" />
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="android.widget.SearchView"/>
 </menu>
+
+
+<!--  BU SIKINTI YARATIYOR DİĞERİNİ KULLANMAK DAHA SAĞLAM
+app:actionViewClass="androidx.appcompat.widget.SearchView"
+-->
+
