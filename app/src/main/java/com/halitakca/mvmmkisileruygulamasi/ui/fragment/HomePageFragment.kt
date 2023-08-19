@@ -4,20 +4,26 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.SearchView
-import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.halitakca.mvmmkisileruygulamasi.R
+import com.halitakca.mvmmkisileruygulamasi.data.entity.Kisiler
 import com.halitakca.mvmmkisileruygulamasi.databinding.FragmentHomePageBinding
+import com.halitakca.mvmmkisileruygulamasi.ui.adapter.KisilerAdapter
 
 
 class HomePageFragment : Fragment(),SearchView.OnQueryTextListener {
     private lateinit var binding: FragmentHomePageBinding
-
+    private lateinit var adapter: KisilerAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentHomePageBinding.inflate(inflater,container,false)
@@ -25,6 +31,25 @@ class HomePageFragment : Fragment(),SearchView.OnQueryTextListener {
         binding.toolbarHomepage.title = "Contacts"
         //  ToolbarHomePage'e sen bir aksiyon bar'sın diyoruz Bu olmazsa Menu ile işlem yapmak zor.
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbarHomepage)
+
+        binding.rv.layoutManager = LinearLayoutManager(requireContext())
+
+        val kisilerList = ArrayList<Kisiler>()
+        val k1 = Kisiler(1,"Halit","2002")
+        val k4 = Kisiler(2,"Saime","1974")
+        val k2 = Kisiler(3,"Ahmet","1966")
+        val k3 = Kisiler(4,"Osman","1997")
+
+        kisilerList.add(k1)
+        kisilerList.add(k2)
+        kisilerList.add(k3)
+        kisilerList.add(k4)
+
+        println("Kişiler list: $kisilerList")
+
+        adapter = KisilerAdapter(kisilerList)
+        binding.rv.adapter = adapter
+
 
         binding.fab.setOnClickListener{
             Navigation.findNavController(it).navigate(R.id.contactEntryNav)
