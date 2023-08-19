@@ -1,14 +1,18 @@
 package com.halitakca.mvmmkisileruygulamasi.ui.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.halitakca.mvmmkisileruygulamasi.data.entity.Kisiler
 import com.halitakca.mvmmkisileruygulamasi.databinding.CardRowBinding
 import com.halitakca.mvmmkisileruygulamasi.databinding.FragmentContactEntryBinding
 import com.halitakca.mvmmkisileruygulamasi.databinding.RecyclerRowBinding
+import com.halitakca.mvmmkisileruygulamasi.ui.fragment.HomePageFragmentDirections
 
 
 class KisilerAdapter(val kisilerList: ArrayList<Kisiler>) : RecyclerView.Adapter<KisilerAdapter.KisilerHolder>() {
@@ -28,8 +32,21 @@ class KisilerAdapter(val kisilerList: ArrayList<Kisiler>) : RecyclerView.Adapter
     }
 
     override fun onBindViewHolder(holder: KisilerHolder, position: Int) {
-        holder.binding.recyclerViewTextView.text = "${kisilerList.get(position).kisi_ad} - ${kisilerList.get(position).kisi_tel}"
+        //holder.binding.recyclerViewTextView.text = "${kisilerList.get(position).kisi_ad} - ${kisilerList.get(position).kisi_tel}"
+        val kisi = kisilerList.get(position)
 
+        holder.binding.recyclerViewTextView.text = "${kisi.kisi_ad} - ${kisi.kisi_tel}"
+
+        holder.binding.satirCard.setOnClickListener{
+            val action = HomePageFragmentDirections.contactDetailNav(kisi)
+            Navigation.findNavController(it).navigate(action)
+        }
+        holder.binding.imageViewDelete.setOnClickListener{
+            Snackbar.make(it,"Are you sure to delete ${kisi.kisi_ad} ?",Snackbar.LENGTH_LONG)
+                .setAction("YES"){
+                    Log.e("Kişi Sil:",kisi.kisi_id.toString())
+                }.show()
+        }
     }
 
 }
