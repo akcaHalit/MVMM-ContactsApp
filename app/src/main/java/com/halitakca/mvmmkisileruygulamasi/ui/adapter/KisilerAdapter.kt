@@ -17,6 +17,7 @@ import com.halitakca.mvmmkisileruygulamasi.databinding.FragmentContactEntryBindi
 import com.halitakca.mvmmkisileruygulamasi.databinding.RecyclerRowBinding
 import com.halitakca.mvmmkisileruygulamasi.ui.fragment.HomePageFragmentDirections
 import com.halitakca.mvmmkisileruygulamasi.ui.viewmodel.HomePageViewModel
+import com.halitakca.mvmmkisileruygulamasi.util.gecisYap
 
 
 class KisilerAdapter(val kisilerList: ArrayList<Kisiler>,
@@ -50,7 +51,8 @@ class KisilerAdapter(val kisilerList: ArrayList<Kisiler>,
 
         holder.binding.satirCard.setOnClickListener{
             val action = HomePageFragmentDirections.contactDetailNav(kisi)
-            Navigation.findNavController(it).navigate(action)
+            Navigation.gecisYap(it,action)
+            // Without Extensions: Navigation.findNavController(it).navigate(action)
         }
         holder.binding.imageViewDelete.setOnClickListener{
             Snackbar.make(it,"Are you sure to delete ${kisi.kisi_ad} ?",Snackbar.LENGTH_LONG)

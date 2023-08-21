@@ -17,6 +17,7 @@ import com.halitakca.mvmmkisileruygulamasi.data.entity.Kisiler
 import com.halitakca.mvmmkisileruygulamasi.databinding.FragmentHomePageBinding
 import com.halitakca.mvmmkisileruygulamasi.ui.adapter.KisilerAdapter
 import com.halitakca.mvmmkisileruygulamasi.ui.viewmodel.HomePageViewModel
+import com.halitakca.mvmmkisileruygulamasi.util.gecisYap
 
 
 class HomePageFragment : Fragment(),SearchView.OnQueryTextListener {
@@ -71,7 +72,8 @@ class HomePageFragment : Fragment(),SearchView.OnQueryTextListener {
         return binding.root
     }
     fun fabClicked(it: View){
-        Navigation.findNavController(it).navigate(R.id.contactEntryNav)
+        Navigation.gecisYap(it,R.id.contactEntryNav)
+        // Without Extensions: Navigation.findNavController(it).navigate(R.id.contactEntryNav)
     }
 
     //     SearchView için olan implementation'lar: 2 tane
