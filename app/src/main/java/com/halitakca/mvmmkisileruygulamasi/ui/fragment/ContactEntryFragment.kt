@@ -7,17 +7,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.halitakca.mvmmkisileruygulamasi.R
 import com.halitakca.mvmmkisileruygulamasi.databinding.FragmentContactEntryBinding
 import com.halitakca.mvmmkisileruygulamasi.databinding.FragmentHomePageBinding
+import com.halitakca.mvmmkisileruygulamasi.ui.viewmodel.ContactDetailViewModel
+import com.halitakca.mvmmkisileruygulamasi.ui.viewmodel.ContactEntryViewModel
+import com.halitakca.mvmmkisileruygulamasi.ui.viewmodel.HomePageViewModel
 
 
 class ContactEntryFragment : Fragment() {
     private lateinit var binding: FragmentContactEntryBinding
+    private lateinit var viewModel : ContactEntryViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val tempViewModel : ContactEntryViewModel by viewModels()
+        viewModel = tempViewModel
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -31,7 +38,7 @@ class ContactEntryFragment : Fragment() {
         return binding.root
     }
     fun buttonSave(personName: String, personPhoneNumber: String){
-        Log.e("Contacts Entry:", "$personName - $personPhoneNumber")
+       viewModel.entry(personName,personPhoneNumber)
     }
 
 }

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,16 +16,17 @@ import com.halitakca.mvmmkisileruygulamasi.R
 import com.halitakca.mvmmkisileruygulamasi.data.entity.Kisiler
 import com.halitakca.mvmmkisileruygulamasi.databinding.FragmentHomePageBinding
 import com.halitakca.mvmmkisileruygulamasi.ui.adapter.KisilerAdapter
+import com.halitakca.mvmmkisileruygulamasi.ui.viewmodel.HomePageViewModel
 
 
 class HomePageFragment : Fragment(),SearchView.OnQueryTextListener {
     private lateinit var binding: FragmentHomePageBinding
     private lateinit var adapter: KisilerAdapter
+    private lateinit var viewModel : HomePageViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-
+        val tempViewModel : HomePageViewModel by viewModels()
+        viewModel = tempViewModel
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         //binding = FragmentHomePageBinding.inflate(inflater,container,false)

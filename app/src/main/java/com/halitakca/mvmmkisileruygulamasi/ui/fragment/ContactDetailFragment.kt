@@ -7,16 +7,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.halitakca.mvmmkisileruygulamasi.R
 import com.halitakca.mvmmkisileruygulamasi.databinding.FragmentContactDetailBinding
 import com.halitakca.mvmmkisileruygulamasi.databinding.FragmentHomePageBinding
+import com.halitakca.mvmmkisileruygulamasi.ui.viewmodel.ContactDetailViewModel
+import com.halitakca.mvmmkisileruygulamasi.ui.viewmodel.HomePageViewModel
 
 class ContactDetailFragment : Fragment() {
     private lateinit var binding: FragmentContactDetailBinding
+    private lateinit var viewModel : ContactDetailViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val tempViewModel : ContactDetailViewModel by viewModels()
+        viewModel = tempViewModel
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
