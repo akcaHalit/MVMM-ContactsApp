@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
@@ -15,9 +16,12 @@ import com.halitakca.mvmmkisileruygulamasi.databinding.CardRowBinding
 import com.halitakca.mvmmkisileruygulamasi.databinding.FragmentContactEntryBinding
 import com.halitakca.mvmmkisileruygulamasi.databinding.RecyclerRowBinding
 import com.halitakca.mvmmkisileruygulamasi.ui.fragment.HomePageFragmentDirections
+import com.halitakca.mvmmkisileruygulamasi.ui.viewmodel.HomePageViewModel
 
 
-class KisilerAdapter(val kisilerList: ArrayList<Kisiler>) : RecyclerView.Adapter<KisilerAdapter.KisilerHolder>() {
+class KisilerAdapter(val kisilerList: ArrayList<Kisiler>,
+                     var viewModel: HomePageViewModel)
+    : RecyclerView.Adapter<KisilerAdapter.KisilerHolder>() {
 
     class KisilerHolder(val binding: RecyclerRowBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -51,7 +55,7 @@ class KisilerAdapter(val kisilerList: ArrayList<Kisiler>) : RecyclerView.Adapter
         holder.binding.imageViewDelete.setOnClickListener{
             Snackbar.make(it,"Are you sure to delete ${kisi.kisi_ad} ?",Snackbar.LENGTH_LONG)
                 .setAction("YES"){
-                    Log.e("Kişi Sil:",kisi.kisi_id.toString())
+                    viewModel.delete(kisi.kisi_id)
                 }.show()
         }
     }

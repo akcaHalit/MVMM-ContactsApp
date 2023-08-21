@@ -42,7 +42,7 @@ class ContactDetailFragment : Fragment() {
     }
 
     fun buttonUpdate(kisi_id: Int,kisi_ad: String, kisi_tel: String) {
-        Log.e("Contact Updated","$kisi_id : $kisi_ad - $kisi_tel")
+        viewModel.update(kisi_id,kisi_ad,kisi_tel)
     }
 
 

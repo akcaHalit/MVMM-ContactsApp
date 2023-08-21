@@ -40,21 +40,12 @@ class HomePageFragment : Fragment(),SearchView.OnQueryTextListener {
 
         binding.rv.layoutManager = LinearLayoutManager(requireContext())
 
-        val kisilerList = ArrayList<Kisiler>()
-        val k1 = Kisiler(1,"Halit","2002")
-        val k4 = Kisiler(2,"Saime","1974")
-        val k2 = Kisiler(3,"Ahmet","1966")
-        val k3 = Kisiler(4,"Osman","1997")
 
-        kisilerList.add(k1)
-        kisilerList.add(k2)
-        kisilerList.add(k3)
-        kisilerList.add(k4)
-
-        println("Kişiler list: $kisilerList")
-
-        adapter = KisilerAdapter(kisilerList)
-        binding.kisilerAdapter = adapter
+        viewModel.kisilerList.observe(viewLifecycleOwner){
+            adapter = KisilerAdapter(it,viewModel)
+            binding.kisilerAdapter = adapter
+        }
+        // with ViewModel we need to pass the viewModel argument.
 
 
 
@@ -85,18 +76,25 @@ class HomePageFragment : Fragment(),SearchView.OnQueryTextListener {
 
     //     SearchView için olan implementation'lar: 2 tane
     override fun onQueryTextSubmit(query: String): Boolean { // Yazdıktan sonra Arama ikonuna basarsan çalışır.
-        search(query)
+        viewModel.search(query)
         return true
     }
 
     override fun onQueryTextChange(newText: String): Boolean {  // Bişeyler yazıyorkenki değişimde çalışır.
-        search(newText)
+        viewModel.search(newText)
         return true
     }
+    /*      Not Necessary with ViewModel - Repo Structure now.
     fun search(searchword: String){
         Log.e("Contact Search",searchword)
     }
+     */
 
+    override fun onResume() {
+        super.onResume()
+        // Sürekli loadContacts yapıp datayı yenilicek.
+        viewModel.loadContacts()
+    }
 
 
 
