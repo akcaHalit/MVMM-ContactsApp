@@ -6,6 +6,7 @@ import android.view.*
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
@@ -26,9 +27,12 @@ class HomePageFragment : Fragment(),SearchView.OnQueryTextListener {
 
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentHomePageBinding.inflate(inflater,container,false)
+        //binding = FragmentHomePageBinding.inflate(inflater,container,false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_home_page,container,false)
+        binding.homePageFragment = this
 
-        binding.toolbarHomepage.title = "Contacts"
+
+        binding.homePageToolbarTitle = "Contacts"
         //  ToolbarHomePage'e sen bir aksiyon bar'sın diyoruz Bu olmazsa Menu ile işlem yapmak zor.
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbarHomepage)
 
@@ -48,12 +52,8 @@ class HomePageFragment : Fragment(),SearchView.OnQueryTextListener {
         println("Kişiler list: $kisilerList")
 
         adapter = KisilerAdapter(kisilerList)
-        binding.rv.adapter = adapter
+        binding.kisilerAdapter = adapter
 
-
-        binding.fab.setOnClickListener{
-            Navigation.findNavController(it).navigate(R.id.contactEntryNav)
-        }
 
 
         // MAİN'DE Yaptığımız MENU kodlamasının FRAGMENT'taki hali:
@@ -77,6 +77,9 @@ class HomePageFragment : Fragment(),SearchView.OnQueryTextListener {
 
         return binding.root
     }
+    fun fabClicked(it: View){
+        Navigation.findNavController(it).navigate(R.id.contactEntryNav)
+    }
 
     //     SearchView için olan implementation'lar: 2 tane
     override fun onQueryTextSubmit(query: String): Boolean { // Yazdıktan sonra Arama ikonuna basarsan çalışır.
@@ -93,4 +96,17 @@ class HomePageFragment : Fragment(),SearchView.OnQueryTextListener {
     }
 
 
+
+
 }
+
+
+/*
+
+        binding.rv.adapter = adapter
+
+        binding.fab.setOnClickListener{
+            Navigation.findNavController(it).navigate(R.id.contactEntryNav)
+        }
+
+ */

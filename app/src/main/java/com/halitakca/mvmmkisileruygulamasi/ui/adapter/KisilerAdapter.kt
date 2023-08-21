@@ -5,9 +5,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import com.halitakca.mvmmkisileruygulamasi.R
 import com.halitakca.mvmmkisileruygulamasi.data.entity.Kisiler
 import com.halitakca.mvmmkisileruygulamasi.databinding.CardRowBinding
 import com.halitakca.mvmmkisileruygulamasi.databinding.FragmentContactEntryBinding
@@ -23,7 +25,10 @@ class KisilerAdapter(val kisilerList: ArrayList<Kisiler>) : RecyclerView.Adapter
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): KisilerHolder {
-        val binding = RecyclerRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        //val binding = RecyclerRowBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding : RecyclerRowBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context),
+            R.layout.recycler_row, parent, false)
+
         return KisilerHolder(binding)
     }
 
@@ -34,6 +39,8 @@ class KisilerAdapter(val kisilerList: ArrayList<Kisiler>) : RecyclerView.Adapter
     override fun onBindViewHolder(holder: KisilerHolder, position: Int) {
         //holder.binding.recyclerViewTextView.text = "${kisilerList.get(position).kisi_ad} - ${kisilerList.get(position).kisi_tel}"
         val kisi = kisilerList.get(position)
+
+        holder.binding.contactObject = kisi
 
         holder.binding.recyclerViewTextView.text = "${kisi.kisi_ad} - ${kisi.kisi_tel}"
 
