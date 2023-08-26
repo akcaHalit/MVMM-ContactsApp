@@ -16,16 +16,16 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarContactentry"
-            app:title="@{contactEntryToolbarTitle}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
+            android:background="#ee091b"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@{contactEntryToolbarTitle}" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout2"
@@ -70,8 +70,10 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="64dp"
             android:layout_marginEnd="32dp"
-            android:text="SAVE"
+            android:backgroundTint="#ee091b"
             android:onClick="@{() -> contactEntryFragment.buttonSave(editTextPersonName.getText().toString(),editTextPersonNumber.getText().toString())}"
+            android:text="SAVE"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"

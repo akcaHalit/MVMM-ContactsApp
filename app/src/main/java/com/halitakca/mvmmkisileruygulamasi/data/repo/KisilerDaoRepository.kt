@@ -30,11 +30,25 @@ class KisilerDaoRepository {
         val k4 = Kisiler(2,"Saime","1974")
         val k2 = Kisiler(3,"Ahmet","1966")
         val k3 = Kisiler(4,"Osman","1997")
+        val k9 = Kisiler(1,"Halit","2002")
+        val k5 = Kisiler(1,"Halit","2002")
+        val k6 = Kisiler(1,"Halit","2002")
+        val k7 = Kisiler(1,"Halit","2002")
+        val k8 = Kisiler(1,"Halit","2002")
+        val k10 = Kisiler(1,"Halit","2002")
+        val k11 = Kisiler(1,"Halit","2002")
 
         kisilerList.add(k1)
         kisilerList.add(k2)
         kisilerList.add(k3)
         kisilerList.add(k4)
+        kisilerList.add(k5)
+        kisilerList.add(k6)
+        kisilerList.add(k7)
+        kisilerList.add(k8)
+        kisilerList.add(k9)
+        kisilerList.add(k10)
+        kisilerList.add(k11)
 
         kisilerListesi.value = kisilerList
     }

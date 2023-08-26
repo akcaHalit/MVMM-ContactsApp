@@ -12,20 +12,21 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:backgroundTint="#ee091b"
         tools:context=".ui.fragment.ContactDetailFragment">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarcontactdetail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
+            android:background="#ee091b"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
-            app:title="@{contactDetailToolbarTitle}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@{contactDetailToolbarTitle}" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout2"
@@ -34,6 +35,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="128dp"
             android:layout_marginEnd="32dp"
+            android:textColorHint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbarcontactdetail">
@@ -42,8 +44,11 @@
                 android:id="@+id/editTextPersonName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#ee091b"
+                android:hint="Person Name: "
                 android:text="@{contactObject.kisi_ad}"
-                android:hint="Person Name: " />
+                android:textColor="@color/white"
+                android:textSize="24dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -53,6 +58,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="64dp"
             android:layout_marginEnd="32dp"
+            android:textColorHint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
@@ -61,8 +67,11 @@
                 android:id="@+id/editTextPersonNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#ee091b"
+                android:hint="Person Phone Number: "
                 android:text="@{contactObject.kisi_tel}"
-                android:hint="Person Phone Number: " />
+                android:textColor="@color/white"
+                android:textSize="24dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -72,8 +81,10 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="64dp"
             android:layout_marginEnd="32dp"
-            android:text="UPDATE"
+            android:backgroundTint="#ee091b"
             android:onClick="@{() -> contactDetailFragment.buttonUpdate(contactObject.kisi_id,editTextPersonName.getText().toString(),editTextPersonNumber.getText().toString())}"
+            android:text="UPDATE"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
